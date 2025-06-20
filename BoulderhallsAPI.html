@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Boulderhalls API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Boulderhalls API</h1>
+    <p>Deze API biedt informatie over boulderhallen.</p>
+    
+    <h2>Gebruik</h2>
+    <p>De data is beschikbaar in JSON-formaat:</p>
+    <pre><code>https://[uw-gebruikersnaam].github.io/[uw-repository-naam]/boulderhalls.json</code></pre>
+    
+    <h2>Voorbeeld response</h2>
+    <pre><code id="example"></code></pre>
+
+    <script>
+        // Laad een voorbeeld van de JSON-data
+        fetch('boulderhalls.json')
+            .then(response => response.json())
+            .then(data => {
+                // Toon de eerste paar items als voorbeeld
+                const sample = Array.isArray(data) ? data.slice(0, 2) : data;
+                document.getElementById('example').textContent = JSON.stringify(sample, null, 2);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                document.getElementById('example').textContent = 'Kon geen voorbeeld laden.';
+            });
+    </script>
+</body>
+</html>
